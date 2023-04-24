@@ -1,9 +1,11 @@
 import { writable } from "svelte/store";
+import { tweened } from "svelte/motion";
+import { cubicOut } from "svelte/easing";
 
 const store = writable([
     {
         id: 1,
-        date: 3,
+        date: "2023-04-3",
         paymentType: 'prélèvement',
         category: 'loyer',
         amount: 600,
@@ -12,7 +14,7 @@ const store = writable([
     },
     {
         id: 2,
-        date: 1,
+        date: "2023-04-1",
         paymentType: 'prélèvement',
         category: 'internet',
         amount: 20,
@@ -21,4 +23,5 @@ const store = writable([
     }
 ]);
 
+export const totalTweenStore = tweened(0, {easing: cubicOut, delay: 800, duration: 500});
 export default store;

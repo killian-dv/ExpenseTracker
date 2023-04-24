@@ -1,6 +1,7 @@
 <script>
     import ExpenseTable from "./components/ExpenseTable.svelte";
     import ExpenseCreate from "./components/ExpenseCreate.svelte";
+    import ExpenseTotal from "./components/ExpenseTotal.svelte";
     import store from "./shared/ExpenseStore.js";
 
     let expenses = [];
@@ -27,6 +28,7 @@
 
 <main>
     <h1>ExpenseTracker</h1>
+    <ExpenseTotal />
     <ExpenseCreate />
     <ExpenseTable expenses={expenses}/>
 </main>

@@ -1,6 +1,9 @@
 <script>
-    export let expenses;
-    console.log(expenses);
+  import { fade } from 'svelte/transition';
+  export let expenses;
+  // console.log(expenses);
+
+  const fadeOptions = {duration: 500};
 </script>
 
 <style>
@@ -21,7 +24,7 @@
     </thead>
     <tbody>
       {#each expenses as exp}
-        <tr>
+        <tr transition:fade={fadeOptions}>
           <th scope="row">{exp.id}</th>
           <td>{exp.date}</td>
           <td>{exp.paymentType}</td>
