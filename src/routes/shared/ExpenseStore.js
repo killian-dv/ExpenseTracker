@@ -20,3 +20,5 @@ const store = writable([
         subtotal: 20,
     }
 ]);
+
+export default store;

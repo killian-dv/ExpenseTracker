@@ -1,5 +1,6 @@
 <script>
-    
+    export let expenses;
+    console.log(expenses);
 </script>
 
 <style>
@@ -19,23 +20,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>June 1rst</td>
-        <td>prélèvement</td>
-        <td>électricité</td>
-        <td>100</td>
-        <td>1</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>June 2rst</td>
-        <td>carte</td>
-        <td>essence</td>
-        <td>70</td>
-        <td>1</td>
-        <td>70</td>
-      </tr>
+      {#each expenses as exp}
+        <tr>
+          <th scope="row">{exp.id}</th>
+          <td>{exp.date}</td>
+          <td>{exp.paymentType}</td>
+          <td>{exp.category}</td>
+          <td>{exp.amount}</td>
+          <td>{exp.quantity}</td>
+          <td>{exp.subtotal}</td>
+        </tr>
+      {/each}
     </tbody>
   </table>
