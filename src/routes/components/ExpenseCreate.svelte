@@ -1,4 +1,6 @@
 <script>
+    import { add_attribute } from "svelte/internal";
+    import store from "../shared/ExpenseStore.js";
     let date;
     let paymentType;
     let category;
@@ -8,7 +10,39 @@
 
     function createExpense() {
         console.log("createExpense");
+        store.update(data => {
+            let id = data.length + 1;
+            let newExpense = {
+                id,
+                date,
+                paymentType,
+                category,
+                amount: parseFloat(amount),
+                quantity,
+                subtotal
+            };
+            return [...data, newExpense];
+        });
     }
+
+    function initForm () {
+        date = getCurrentDate();
+        paymentType = "card";
+        category = "rent";
+        amount = "00.00";
+        quantity = 1;
+    }
+
+    function getCurrentDate() {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+
+        return yyyy + '-' + mm + '-' + dd;
+    }
+
+    initForm();
 
 </script>
 <style>
